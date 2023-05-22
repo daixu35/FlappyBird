@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="playGame">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>160</x>
      <y>470</y>
      <width>93</width>
      <height>28</height>
@@ -29,7 +29,7 @@
   <widget class="QPushButton" name="Option">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>160</x>
      <y>510</y>
      <width>93</width>
      <height>28</height>

@@ -2,6 +2,8 @@
 #define FLAPPYAPP_H
 
 #include <QWidget>
+#include <QMovie>
+#include <QLabel>
 
 namespace Ui {
 class FlappyApp;
@@ -17,6 +19,8 @@ public:
 
 private:
     Ui::FlappyApp *ui;
+    QMovie* m_movie;
+    QLabel* m_label;
 
 signals:
     void game_page();

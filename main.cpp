@@ -22,7 +22,5 @@ int main(int argc, char *argv[])
     QObject::connect(&mainPage, SIGNAL(game_page()), &gamePage, SLOT(Show_Game_Page()));
     QObject::connect(&mainPage, SIGNAL(setting_page()), &settingPage, SLOT(Show_Setting_Page()));
 
-    int x = 20;
-
     return a.exec();
 }

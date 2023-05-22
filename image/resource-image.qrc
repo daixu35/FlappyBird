@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>bg.png</file>
+        <file>startsbg.gif</file>
+        <file>Play.png</file>
     </qresource>
 </RCC>
