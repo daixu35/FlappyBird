@@ -25,11 +25,14 @@ private:
 signals:
     void game_page();
     void setting_page();
+    void help_page();
 
 private slots:
     void Show_Main_Page();
     void on_playGame_clicked();
     void on_Option_clicked();
+    void on_HelpBtn_clicked();
+    void on_exitBtn_clicked();
 };
 
 #endif // FLAPPYAPP_H

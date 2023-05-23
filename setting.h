@@ -2,6 +2,8 @@
 #define SETTING_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QGraphicsPathItem>
 
 namespace Ui {
 class Setting;
@@ -23,6 +25,7 @@ signals:
 
 private slots:
     void Show_Setting_Page();
+    void on_backBtn_clicked();
 };
 
 #endif // SETTING_H

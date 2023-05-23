@@ -7,6 +7,7 @@ FlappyApp::FlappyApp(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // 背景动画
     m_movie = new QMovie(":/startsbg.gif");
     m_movie->setScaledSize(size());
     m_label = new QLabel(this);
@@ -15,19 +16,43 @@ FlappyApp::FlappyApp(QWidget *parent) :
     m_movie->start();
     m_label->lower();
 
+    // 开始游戏的按钮
     ui->playGame->move(141, 350);
     ui->playGame->setFixedSize(150, 50);
-    ui->playGame->setStyleSheet("QPushButton {background-color: transparent;} "
+    ui->playGame->setStyleSheet("QPushButton {background-color: transparent;}"
                                 "QPushButton {color: black; font-size: 48px; font-family: Impact;}"
-                                "QPushButton:hover {color: red; font-size: 50px;}");
+                                "QPushButton:hover {color: red; font-size: 56px;}");
 
+    // 设置按钮的设置
+    ui->Option->move(141, 395);
+    ui->Option->setFixedSize(150, 50);
+    ui->Option->setStyleSheet("QPushButton {background-color: transparent;}"
+                              "QPushButton {color: black; font-size: 32px; font-family: Impact;}"
+                              "QPushButton:hover {color: red; font-size: 36px;}");
 
+    // 帮助按钮的设置
+    ui->HelpBtn->move(141, 435);
+    ui->HelpBtn->setFixedSize(150, 50);
+    ui->HelpBtn->setStyleSheet("QPushButton {background-color: transparent;}"
+                              "QPushButton {color: black; font-size: 38px; font-family: Impact;}"
+                              "QPushButton:hover {color: red; font-size: 46px;}");
 
+    // 退出按钮的设置
+    ui->exitBtn->move(141, 475);
+    ui->exitBtn->setFixedSize(150, 50);
+    ui->exitBtn->setStyleSheet("QPushButton {background-color: transparent;}"
+                              "QPushButton {color: black; font-size: 38px; font-family: Impact;}"
+                              "QPushButton:hover {color: red; font-size: 46px;}");
 }
 
 FlappyApp::~FlappyApp()
 {
     delete ui;
+}
+
+void FlappyApp::Show_Main_Page()
+{
+    this->show();
 }
 
 void FlappyApp::on_playGame_clicked()
@@ -36,13 +61,19 @@ void FlappyApp::on_playGame_clicked()
     emit game_page();
 }
 
-void FlappyApp::Show_Main_Page()
-{
-    this->show();
-}
-
 void FlappyApp::on_Option_clicked()
 {
     this->hide();
     emit setting_page();
+}
+
+void FlappyApp::on_HelpBtn_clicked()
+{
+    this->hide();
+    emit help_page();
+}
+
+void FlappyApp::on_exitBtn_clicked()
+{
+    QApplication::quit();
 }

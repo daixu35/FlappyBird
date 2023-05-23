@@ -2,6 +2,7 @@
     <qresource prefix="/">
         <file>bg.png</file>
         <file>startsbg.gif</file>
-        <file>Play.png</file>
+        <file>settingbg.jpg</file>
+        <file>helpbg.jpg</file>
     </qresource>
 </RCC>

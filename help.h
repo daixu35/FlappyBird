@@ -15,6 +15,14 @@ public:
     explicit Help(QWidget *parent = nullptr);
     ~Help();
 
+signals:
+    void show_main_page();
+
+private slots:
+    void Show_Help_Page();
+
+    void on_backBtn_clicked();
+
 private:
     Ui::Help *ui;
 };
