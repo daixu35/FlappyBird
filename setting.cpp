@@ -6,6 +6,7 @@ Setting::Setting(QWidget *parent) :
     ui(new Ui::Setting)
 {
     ui->setupUi(this);
+    m_mediaplayer = new QMediaPlayer(this);
 
     // 设置背景图片
     QPalette pal = this->palette();
@@ -18,11 +19,47 @@ Setting::Setting(QWidget *parent) :
     ui->backBtn->setStyleSheet("QPushButton {background-color: transparent;}"
                                 "QPushButton {color: black; font-size: 48px; font-family: Impact;}"
                                 "QPushButton:hover {color: red; font-size: 56px;}");
+
+    // 设置背景音乐
+    QMediaPlaylist* musicList = new QMediaPlaylist(m_mediaplayer);
+    musicList->addMedia(QUrl("qrc:/default1.mp3"));
+    musicList->addMedia(QUrl("qrc:/default2.mp3"));
+    musicList->addMedia(QUrl("qrc:/default3.mp3"));
+    musicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    m_mediaplayer->setPlaylist(musicList);
+    m_mediaplayer->setVolume(50);
+
+    // 初始化设置界面的音乐调节界面
+    ui->mask->setFixedSize(420, 400);
+    ui->mask->move(6, 20);
+    ui->mask->setStyleSheet("background-color: rgba(0, 0, 0, 50);border-radius: 10px;");
+    ui->mask->lower();
+    ui->Volume->setFont(QFont("华文琥珀", 16, QFont::Bold));
+    ui->Volume->setFixedSize(150, 50);
+    ui->bgmVolume->setFont(QFont("华文隶书", 14, QFont::Bold));
+    ui->bgmVolume->setFixedSize(100, 50);
+    ui->bgmVolume->move(45, 95);
+    ui->SoundEffects->setFont(QFont("华文隶书", 14, QFont::Bold));
+    ui->SoundEffects->setFixedSize(100, 50);
+    ui->SoundEffects->move(45, 135);
+    ui->bgmVolumeSlider->setValue(25);
+    ui->bgmVolumeSlider->setStyleSheet("QSlider::handle:horizontal { background-color: blue; }");
+    ui->SoundEffectsslider->setValue(25);
+    ui->SoundEffectsslider->setStyleSheet("QSlider::handle:horizontal { background-color: blue; }");
+    connect(ui->bgmVolumeSlider, &QSlider::valueChanged, this, &Setting::change_bgm_volume);
+    //connect(ui->SoundEffectsslider, &QSlider::valueChanged, this, SLOT(change_soundeffect_volume()));
+
+    // 设置音乐自选切换
+    ui->musicListName->move(45, 200);
+    ui->musicListName->setFont(QFont("华文隶书", 14, QFont::Bold));
+    ui->musicListName->setFixedSize(100, 50);
+
 }
 
 Setting::~Setting()
 {
     delete ui;
+    if (m_mediaplayer != nullptr) delete m_mediaplayer;
 }
 
 void Setting::Show_Setting_Page()
@@ -35,3 +72,16 @@ void Setting::on_backBtn_clicked()
     this->hide();
     emit show_main_page();
 }
+
+void Setting::playMusic()
+{
+    m_mediaplayer->play();
+}
+
+void Setting::change_bgm_volume()
+{
+    int value = ui->bgmVolumeSlider->value();
+    m_mediaplayer->setVolume(value);
+}
+
+

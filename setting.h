@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QPainter>
 #include <QGraphicsPathItem>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 namespace Ui {
 class Setting;
@@ -15,10 +17,12 @@ class Setting : public QWidget
 
 public:
     explicit Setting(QWidget *parent = nullptr);
+    void playMusic();
     ~Setting();
 
 private:
     Ui::Setting *ui;
+    QMediaPlayer* m_mediaplayer;
 
 signals:
     void show_main_page();
@@ -26,6 +30,8 @@ signals:
 private slots:
     void Show_Setting_Page();
     void on_backBtn_clicked();
+    void change_bgm_volume();
+    //void change_soundeffect_volume();
 };
 
 #endif // SETTING_H

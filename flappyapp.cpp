@@ -48,6 +48,8 @@ FlappyApp::FlappyApp(QWidget *parent) :
 FlappyApp::~FlappyApp()
 {
     delete ui;
+    if (m_movie != nullptr) delete m_movie;
+    if (m_label != nullptr) delete m_label;
 }
 
 void FlappyApp::Show_Main_Page()
