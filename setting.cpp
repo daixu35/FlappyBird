@@ -21,12 +21,11 @@ Setting::Setting(QWidget *parent) :
                                 "QPushButton:hover {color: red; font-size: 56px;}");
 
     // 设置背景音乐
-    QMediaPlaylist* musicList = new QMediaPlaylist(m_mediaplayer);
-    musicList->addMedia(QUrl("qrc:/default1.mp3"));
-    musicList->addMedia(QUrl("qrc:/default2.mp3"));
-    musicList->addMedia(QUrl("qrc:/default3.mp3"));
-    musicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
-    m_mediaplayer->setPlaylist(musicList);
+    m_musicList = new QMediaPlaylist(m_mediaplayer);
+    m_musicList->addMedia(QUrl("qrc:/music/default1.mp3"));
+    m_musicList->addMedia(QUrl("qrc:/music/default2.mp3"));
+    m_musicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+    m_mediaplayer->setPlaylist(m_musicList);
     m_mediaplayer->setVolume(50);
 
     // 初始化设置界面的音乐调节界面
@@ -53,6 +52,21 @@ Setting::Setting(QWidget *parent) :
     ui->musicListName->move(45, 200);
     ui->musicListName->setFont(QFont("华文隶书", 14, QFont::Bold));
     ui->musicListName->setFixedSize(100, 50);
+    ui->bgmChangeLabel->move(230, 200);
+    ui->bgmChangeLabel->setFont(QFont("华文隶书", 12, QFont::Bold));
+    ui->bgmChangeLabel->setFixedSize(100, 50);
+    ui->nextBgmBtn->move(322, 212);
+    ui->nextBgmBtn->setFixedSize(50, 20);
+    ui->nextBgmBtn->setStyleSheet("QPushButton {background-color: transparent;}"
+                              "QPushButton {color: black; font-size: 34px; font-family: Impact;}"
+                              "QPushButton:hover {color: red; font-size: 46px;}");
+    ui->priBgmBtn->move(180, 212);
+    ui->priBgmBtn->setFixedSize(50, 20);
+    ui->priBgmBtn->setStyleSheet("QPushButton {background-color: transparent;}"
+                              "QPushButton {color: black; font-size: 34px; font-family: Impact;}"
+                              "QPushButton:hover {color: red; font-size: 46px;}");
+
+    // 切换背景图片
 
 }
 
@@ -84,4 +98,26 @@ void Setting::change_bgm_volume()
     m_mediaplayer->setVolume(value);
 }
 
+void Setting::on_nextBgmBtn_clicked()
+{
+    QString bgm = ui->bgmChangeLabel->text();
+    if (bgm == "默认音乐1")
+        ui->bgmChangeLabel->setText("默认音乐2");
+    else
+        ui->bgmChangeLabel->setText("默认音乐1");
+    m_musicList->setPlaybackMode(QMediaPlaylist::Loop);
+    m_mediaplayer->playlist()->next();
+    m_musicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+}
 
+void Setting::on_priBgmBtn_clicked()
+{
+    QString bgm = ui->bgmChangeLabel->text();
+    if (bgm == "默认音乐1")
+        ui->bgmChangeLabel->setText("默认音乐2");
+    else
+        ui->bgmChangeLabel->setText("默认音乐1");
+    m_musicList->setPlaybackMode(QMediaPlaylist::Loop);
+    m_mediaplayer->playlist()->next();
+    m_musicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+}

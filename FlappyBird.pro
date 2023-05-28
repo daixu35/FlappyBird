@@ -53,4 +53,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     image/resource-image.qrc \
-    music/resource-music.qrc
+    image/resource-music.qrc

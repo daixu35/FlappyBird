@@ -23,6 +23,7 @@ public:
 private:
     Ui::Setting *ui;
     QMediaPlayer* m_mediaplayer;
+    QMediaPlaylist* m_musicList;
 
 signals:
     void show_main_page();
@@ -32,6 +33,8 @@ private slots:
     void on_backBtn_clicked();
     void change_bgm_volume();
     //void change_soundeffect_volume();
+    void on_nextBgmBtn_clicked();
+    void on_priBgmBtn_clicked();
 };
 
 #endif // SETTING_H

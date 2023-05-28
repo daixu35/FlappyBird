@@ -2,6 +2,5 @@
     <qresource prefix="/">
         <file>default1.mp3</file>
         <file>default2.mp3</file>
-        <file>default3.mp3</file>
     </qresource>
 </RCC>

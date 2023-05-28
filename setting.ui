@@ -103,14 +103,14 @@
   <widget class="QLabel" name="mask">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>270</y>
+     <x>40</x>
+     <y>310</y>
      <width>541</width>
      <height>301</height>
     </rect>
    </property>
    <property name="text">
-    <string> </string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="musicListName">
@@ -124,6 +124,45 @@
    </property>
    <property name="text">
     <string>音      乐</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bgmChangeLabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>200</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>默认音乐1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nextBgmBtn">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>200</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="priBgmBtn">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>200</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;</string>
    </property>
   </widget>
  </widget>
