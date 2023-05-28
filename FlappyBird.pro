@@ -38,7 +38,8 @@ HEADERS += \
     game.h \
     setting.h \
     gamescene.h \
-    help.h
+    help.h \
+    ui_game.h
 
 FORMS += \
         flappyapp.ui \
