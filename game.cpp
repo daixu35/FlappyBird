@@ -15,6 +15,8 @@ Game::Game(QWidget *parent) :
     scene->addItem(pixItem);
     pixItem->setPos(QPointF(0, 0));
 
+    scene->birddef();
+
     ui->Box->setScene(scene);
 }
 

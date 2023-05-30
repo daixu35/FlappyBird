@@ -4,5 +4,18 @@
         <file>startsbg.gif</file>
         <file>settingbg.jpg</file>
         <file>helpbg.jpg</file>
+        <file>0.png</file>
+        <file>1.png</file>
+        <file>2.png</file>
+        <file>3.png</file>
+        <file>4.png</file>
+        <file>5.png</file>
+        <file>6.png</file>
+        <file>7.png</file>
+        <file>gameover.png</file>
+        <file>ground.png</file>
+        <file>pipe.png</file>
+        <file>start.png</file>
+        <file>beida.png</file>
     </qresource>
 </RCC>

@@ -31,7 +31,10 @@ SOURCES += \
     game.cpp \
     setting.cpp \
     gamescene.cpp \
-    help.cpp
+    help.cpp \
+    birditem.cpp \
+    ground.cpp \
+    pipeitem.cpp
 
 HEADERS += \
         flappyapp.h \
@@ -39,7 +42,10 @@ HEADERS += \
     setting.h \
     gamescene.h \
     help.h \
-    ui_game.h
+    ui_game.h \
+    birditem.h \
+    ground.h \
+    pipeitem.h
 
 FORMS += \
         flappyapp.ui \
