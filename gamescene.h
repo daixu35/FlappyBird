@@ -7,8 +7,10 @@
 #include <birditem.h>
 #include "pipeitem.h"
 #include "ground.h"
+#include "gameover.h"
 #include <QGraphicsPixmapItem>
 
+class Gameover;
 class GameScene : public QGraphicsScene
 {
     Q_OBJECT
@@ -17,6 +19,7 @@ public:
     void birddef();
     void mainstart();
     void Scoreadd();
+    Gameover* gameoverScene;
 
 signals:
 
@@ -33,12 +36,13 @@ private:
     void gameover();
     groundItem* ground;
     bool gameoverbool;
-    int score;
+    int score=0;
     QGraphicsTextItem* scoretext;
     void showscore();
+signals:
+    void show_gameover_page(int &);
 
 public slots:
-
     // QGraphicsScene interface
 protected:
     void keyPressEvent(QKeyEvent *event);

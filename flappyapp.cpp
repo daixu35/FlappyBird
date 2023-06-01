@@ -1,5 +1,6 @@
 #include "flappyapp.h"
 #include "ui_flappyapp.h"
+#include <QProcess>
 
 FlappyApp::FlappyApp(QWidget *parent) :
     QWidget(parent),
@@ -78,4 +79,8 @@ void FlappyApp::on_HelpBtn_clicked()
 void FlappyApp::on_exitBtn_clicked()
 {
     QApplication::quit();
+}
+
+void FlappyApp::Restart_Game(){
+    this->repaint();
 }
