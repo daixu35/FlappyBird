@@ -34,7 +34,8 @@ SOURCES += \
     help.cpp \
     birditem.cpp \
     ground.cpp \
-    pipeitem.cpp
+    pipeitem.cpp \
+    gameover.cpp
 
 HEADERS += \
         flappyapp.h \
@@ -45,13 +46,15 @@ HEADERS += \
     ui_game.h \
     birditem.h \
     ground.h \
-    pipeitem.h
+    pipeitem.h \
+    gameover.h
 
 FORMS += \
         flappyapp.ui \
     game.ui \
     setting.ui \
-    help.ui
+    help.ui \
+    gameover.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

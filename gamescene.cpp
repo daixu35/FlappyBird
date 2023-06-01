@@ -2,6 +2,7 @@
 #include <QKeyEvent>
 #include "birditem.h"
 #include "ground.h"
+#include "gameover.h"
 
 GameScene::GameScene(QObject *parent) :
     QGraphicsScene(parent),startsign(0),is_paused(0),gameoverbool(0),score(0)
@@ -17,7 +18,7 @@ GameScene::GameScene(QObject *parent) :
 
     gameoverImage = new QGraphicsPixmapItem(QPixmap(":/gameover.png"));
     nankaiImage = new QGraphicsPixmapItem(QPixmap(":/beida.png"));
-    show_score = new QGraphicsTextItem("分数：0");
+    show_score = new QGraphicsTextItem(" 分数:0 ");
     show_score->setPos(216, 30);
     show_score->setZValue(20);
     QFont font;
@@ -58,7 +59,7 @@ void GameScene::mainstart()
 void GameScene::Scoreadd()
 {
     score++;
-    show_score->setPlainText("分数："+QString::number(score));
+    show_score->setPlainText("分数:"+QString::number(score));
 }
 
 void GameScene::setpipetimer()
@@ -81,6 +82,7 @@ void GameScene::setpipetimer()
 
 void GameScene::gameover()
 {
+    emit(show_gameover_page(score));
     gameoverbool=1; //已结束游戏
     bird->birdstop();   //鸟停止运动
     ground->groundstop();   //地板停止运动
@@ -109,7 +111,7 @@ void GameScene::gameover()
 void GameScene::showscore()
 {
     scoretext = new QGraphicsTextItem();
-    QString lastscore="Your Score:" + QString::number(score);
+    QString lastscore="分数:" + QString::number(score);
     scoretext->setHtml(lastscore);
 
     //设置分数显示界面字体和颜色
@@ -130,10 +132,10 @@ void GameScene::keyPressEvent(QKeyEvent *event)
     //第一次空格将移除开始界面图片，并让小鸟，水管开始运动
     if(!gameoverbool)
     {
-        if(event->key()==Qt::Key_Space&&!is_paused){
+        if((event->key()==Qt::Key_Space&&!is_paused)||(event->key()==Qt::Key_W&&!is_paused)){
             bird->jump();
     }
-    else if(event->key()==Qt::Key_Escape){
+    else if(event->key()==Qt::Key_Escape||event->key()==Qt::Key_W){
         if(is_paused==0){
             is_paused=1;
             bird->birdpause();   //鸟停止运动

@@ -33,6 +33,7 @@ private slots:
     void on_Option_clicked();
     void on_HelpBtn_clicked();
     void on_exitBtn_clicked();
+    void Restart_Game();
 };
 
 #endif // FLAPPYAPP_H
