@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
@@ -23,6 +24,8 @@ public:
     QPushButton *Option;
     QPushButton *HelpBtn;
     QPushButton *exitBtn;
+    QLabel *FlappyBird;
+    QLabel *subFlappyBird;
 
     void setupUi(QWidget *FlappyApp)
     {
@@ -41,6 +44,12 @@ public:
         exitBtn = new QPushButton(FlappyApp);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
         exitBtn->setGeometry(QRect(160, 590, 93, 28));
+        FlappyBird = new QLabel(FlappyApp);
+        FlappyBird->setObjectName(QStringLiteral("FlappyBird"));
+        FlappyBird->setGeometry(QRect(160, 130, 72, 15));
+        subFlappyBird = new QLabel(FlappyApp);
+        subFlappyBird->setObjectName(QStringLiteral("subFlappyBird"));
+        subFlappyBird->setGeometry(QRect(160, 160, 72, 15));
 
         retranslateUi(FlappyApp);
 
@@ -54,6 +63,8 @@ public:
         Option->setText(QApplication::translate("FlappyApp", "Options", nullptr));
         HelpBtn->setText(QApplication::translate("FlappyApp", "Help", nullptr));
         exitBtn->setText(QApplication::translate("FlappyApp", "Exit", nullptr));
+        FlappyBird->setText(QApplication::translate("FlappyApp", "FlappyBird", nullptr));
+        subFlappyBird->setText(QApplication::translate("FlappyApp", "\345\260\217\346\270\270\346\210\217(^_^)", nullptr));
     } // retranslateUi
 
 };

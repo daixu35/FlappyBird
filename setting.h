@@ -34,6 +34,7 @@ private slots:
     void change_bgm_volume();
     void on_nextBgmBtn_clicked();
     void on_priBgmBtn_clicked();
+    void on_musicSwitch_stateChanged(int arg1);
 };
 
 #endif // SETTING_H

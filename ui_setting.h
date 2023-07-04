@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
@@ -24,14 +25,13 @@ public:
     QPushButton *backBtn;
     QLabel *Volume;
     QLabel *bgmVolume;
-    QLabel *SoundEffects;
     QSlider *bgmVolumeSlider;
-    QSlider *SoundEffectsslider;
     QLabel *mask;
     QLabel *musicListName;
     QLabel *bgmChangeLabel;
     QPushButton *nextBgmBtn;
     QPushButton *priBgmBtn;
+    QCheckBox *musicSwitch;
 
     void setupUi(QWidget *Setting)
     {
@@ -47,20 +47,12 @@ public:
         bgmVolume = new QLabel(Setting);
         bgmVolume->setObjectName(QStringLiteral("bgmVolume"));
         bgmVolume->setGeometry(QRect(40, 110, 81, 21));
-        SoundEffects = new QLabel(Setting);
-        SoundEffects->setObjectName(QStringLiteral("SoundEffects"));
-        SoundEffects->setGeometry(QRect(40, 144, 101, 21));
         bgmVolumeSlider = new QSlider(Setting);
         bgmVolumeSlider->setObjectName(QStringLiteral("bgmVolumeSlider"));
         bgmVolumeSlider->setGeometry(QRect(170, 110, 241, 22));
         bgmVolumeSlider->setMaximum(100);
         bgmVolumeSlider->setOrientation(Qt::Horizontal);
         bgmVolumeSlider->setTickPosition(QSlider::NoTicks);
-        SoundEffectsslider = new QSlider(Setting);
-        SoundEffectsslider->setObjectName(QStringLiteral("SoundEffectsslider"));
-        SoundEffectsslider->setGeometry(QRect(170, 150, 241, 22));
-        SoundEffectsslider->setMaximum(100);
-        SoundEffectsslider->setOrientation(Qt::Horizontal);
         mask = new QLabel(Setting);
         mask->setObjectName(QStringLiteral("mask"));
         mask->setGeometry(QRect(40, 310, 541, 301));
@@ -76,6 +68,9 @@ public:
         priBgmBtn = new QPushButton(Setting);
         priBgmBtn->setObjectName(QStringLiteral("priBgmBtn"));
         priBgmBtn->setGeometry(QRect(140, 200, 93, 28));
+        musicSwitch = new QCheckBox(Setting);
+        musicSwitch->setObjectName(QStringLiteral("musicSwitch"));
+        musicSwitch->setGeometry(QRect(40, 270, 161, 19));
 
         retranslateUi(Setting);
 
@@ -88,12 +83,12 @@ public:
         backBtn->setText(QApplication::translate("Setting", "Back", nullptr));
         Volume->setText(QApplication::translate("Setting", "\345\243\260\351\237\263\350\256\276\347\275\256\357\274\232", nullptr));
         bgmVolume->setText(QApplication::translate("Setting", "\350\203\214\346\231\257\351\237\263\344\271\220:", nullptr));
-        SoundEffects->setText(QApplication::translate("Setting", "\351\237\263\346\225\210\351\237\263\344\271\220:", nullptr));
         mask->setText(QString());
         musicListName->setText(QApplication::translate("Setting", "\351\237\263      \344\271\220", nullptr));
         bgmChangeLabel->setText(QApplication::translate("Setting", "\351\273\230\350\256\244\351\237\263\344\271\2201", nullptr));
         nextBgmBtn->setText(QApplication::translate("Setting", ">", nullptr));
         priBgmBtn->setText(QApplication::translate("Setting", "<", nullptr));
+        musicSwitch->setText(QApplication::translate("Setting", "\346\232\202\345\201\234\346\222\255\346\224\276\351\237\263\344\271\220", nullptr));
     } // retranslateUi
 
 };

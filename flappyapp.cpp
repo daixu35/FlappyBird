@@ -17,6 +17,14 @@ FlappyApp::FlappyApp(QWidget *parent) :
     m_movie->start();
     m_label->lower();
 
+    // 标题文字设置
+    ui->FlappyBird->move(110, 30);
+    ui->FlappyBird->setFixedSize(300, 150);
+    ui->FlappyBird->setStyleSheet("QLabel {color: rgb(65,105,225); font-size: 48px; font-family: Impact;}");
+    ui->subFlappyBird->move(112, 75);
+    ui->subFlappyBird->setFixedSize(300, 150);
+    ui->subFlappyBird->setStyleSheet("QLabel {color: rgb(65,105,225); font-size: 36px; font-family: 黑体; font-weight: bold;}");
+
     // 开始游戏的按钮
     ui->playGame->move(141, 350);
     ui->playGame->setFixedSize(150, 50);

@@ -37,8 +37,9 @@ Setting::Setting(QWidget *parent) :
     ui->Volume->setFixedSize(150, 50);
     ui->bgmVolume->setFont(QFont("华文隶书", 14, QFont::Bold));
     ui->bgmVolume->setFixedSize(100, 50);
-    ui->bgmVolume->move(45, 95);
+    ui->bgmVolume->move(35, 125);
     ui->bgmVolumeSlider->setValue(25);
+    ui->bgmVolumeSlider->move(150, 140);
     ui->bgmVolumeSlider->setStyleSheet("QSlider::handle:horizontal { background-color: blue; }");
     connect(ui->bgmVolumeSlider, &QSlider::valueChanged, this, &Setting::change_bgm_volume);
 
@@ -61,7 +62,9 @@ Setting::Setting(QWidget *parent) :
                               "QPushButton:hover {color: red; font-size: 46px;}");
 
     // 设置关闭背景音乐按钮
-
+    ui->musicSwitch->move(35, 250);
+    ui->musicSwitch->setFont(QFont("华文隶书", 14, QFont::Bold));
+    ui->musicSwitch->setFixedSize(400, 100);
 }
 
 Setting::~Setting()
@@ -114,4 +117,12 @@ void Setting::on_priBgmBtn_clicked()
     m_musicList->setPlaybackMode(QMediaPlaylist::Loop);
     m_mediaplayer->playlist()->next();
     m_musicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+}
+
+void Setting::on_musicSwitch_stateChanged(int arg1)
+{
+    if (arg1 == Qt::Unchecked)
+        m_mediaplayer->play();
+    else
+        m_mediaplayer->pause();
 }

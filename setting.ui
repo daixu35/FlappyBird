@@ -141,12 +141,12 @@
     <rect>
      <x>40</x>
      <y>270</y>
-     <width>91</width>
+     <width>161</width>
      <height>19</height>
     </rect>
    </property>
    <property name="text">
-    <string>关闭音乐</string>
+    <string>暂停播放音乐</string>
    </property>
   </widget>
  </widget>
