@@ -38,15 +38,9 @@ Setting::Setting(QWidget *parent) :
     ui->bgmVolume->setFont(QFont("华文隶书", 14, QFont::Bold));
     ui->bgmVolume->setFixedSize(100, 50);
     ui->bgmVolume->move(45, 95);
-    ui->SoundEffects->setFont(QFont("华文隶书", 14, QFont::Bold));
-    ui->SoundEffects->setFixedSize(100, 50);
-    ui->SoundEffects->move(45, 135);
     ui->bgmVolumeSlider->setValue(25);
     ui->bgmVolumeSlider->setStyleSheet("QSlider::handle:horizontal { background-color: blue; }");
-    ui->SoundEffectsslider->setValue(25);
-    ui->SoundEffectsslider->setStyleSheet("QSlider::handle:horizontal { background-color: blue; }");
     connect(ui->bgmVolumeSlider, &QSlider::valueChanged, this, &Setting::change_bgm_volume);
-    //connect(ui->SoundEffectsslider, &QSlider::valueChanged, this, SLOT(change_soundeffect_volume()));
 
     // 设置音乐自选切换
     ui->musicListName->move(45, 200);
@@ -66,7 +60,7 @@ Setting::Setting(QWidget *parent) :
                               "QPushButton {color: black; font-size: 34px; font-family: Impact;}"
                               "QPushButton:hover {color: red; font-size: 46px;}");
 
-    // 切换背景图片
+    // 设置关闭背景音乐按钮
 
 }
 

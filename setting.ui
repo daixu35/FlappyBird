@@ -52,19 +52,6 @@
     <string>背景音乐:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="SoundEffects">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>144</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>音效音乐:</string>
-   </property>
-  </widget>
   <widget class="QSlider" name="bgmVolumeSlider">
    <property name="geometry">
     <rect>
@@ -82,22 +69,6 @@
    </property>
    <property name="tickPosition">
     <enum>QSlider::NoTicks</enum>
-   </property>
-  </widget>
-  <widget class="QSlider" name="SoundEffectsslider">
-   <property name="geometry">
-    <rect>
-     <x>170</x>
-     <y>150</y>
-     <width>241</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="maximum">
-    <number>100</number>
-   </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
    </property>
   </widget>
   <widget class="QLabel" name="mask">
@@ -163,6 +134,19 @@
    </property>
    <property name="text">
     <string>&lt;</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="musicSwitch">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>270</y>
+     <width>91</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>关闭音乐</string>
    </property>
   </widget>
  </widget>

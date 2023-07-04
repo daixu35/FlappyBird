@@ -32,7 +32,6 @@ private slots:
     void Show_Setting_Page();
     void on_backBtn_clicked();
     void change_bgm_volume();
-    //void change_soundeffect_volume();
     void on_nextBgmBtn_clicked();
     void on_priBgmBtn_clicked();
 };

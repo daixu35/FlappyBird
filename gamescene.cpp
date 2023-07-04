@@ -99,7 +99,7 @@ void GameScene::setbonustimer()
    bonustimer = new QTimer(this);
    connect(bonustimer,&QTimer::timeout,[=](){
     bool Produce_Bonus=(rand()%(100)>75);
-    if(true){
+    if(Produce_Bonus){
         Bonus* tmp_Bonus=new Bonus(score);
         addItem(tmp_Bonus);
         connect(tmp_Bonus,&Bonus::touchedsignal,[=](){
