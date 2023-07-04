@@ -35,7 +35,8 @@ SOURCES += \
     birditem.cpp \
     ground.cpp \
     pipeitem.cpp \
-    gameover.cpp
+    gameover.cpp \
+    bonus.cpp
 
 HEADERS += \
         flappyapp.h \
@@ -47,7 +48,8 @@ HEADERS += \
     birditem.h \
     ground.h \
     pipeitem.h \
-    gameover.h
+    gameover.h \
+    bonus.h
 
 FORMS += \
         flappyapp.ui \

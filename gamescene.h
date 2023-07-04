@@ -7,7 +7,6 @@
 #include <birditem.h>
 #include "pipeitem.h"
 #include "ground.h"
-#include "gameover.h"
 #include <QGraphicsPixmapItem>
 
 class Gameover;
@@ -25,7 +24,10 @@ signals:
 
 private:
     void setpipetimer();
+    void setbonustimer();
     QTimer* pipetimer;
+    QTimer* bonustimer;
+    QTimer* invincibletimer;
     birditem* bird;
     QGraphicsPixmapItem* startImage;
     QGraphicsPixmapItem* gameoverImage;
@@ -39,6 +41,7 @@ private:
     int score=0;
     QGraphicsTextItem* scoretext;
     void showscore();
+    bool invincible;
 signals:
     void show_gameover_page(int &);
 

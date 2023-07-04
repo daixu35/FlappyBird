@@ -3,12 +3,21 @@
 #include "birditem.h"
 #include "ground.h"
 #include "gameover.h"
+#include "bonus.h"
 
 GameScene::GameScene(QObject *parent) :
     QGraphicsScene(parent),startsign(0),is_paused(0),gameoverbool(0),score(0)
 {
     setpipetimer();
     //水管定时器 用于定时间间隔生成新水管
+
+    // 生成道具
+    setbonustimer();
+    invincibletimer=new QTimer(this);
+    invincibletimer->setSingleShot(true);
+    connect(invincibletimer,&QTimer::timeout,[=](){
+        invincible=0;
+        });
 
     startImage = new QGraphicsPixmapItem(QPixmap(":/start.png"));
     startImage->setPos(0,0);
@@ -54,6 +63,11 @@ void GameScene::mainstart()
     if(!pipetimer->isActive()){
         pipetimer->start(2000);
     }
+    if(!bonustimer->isActive()){
+        QTimer::singleShot(1000, [=]() {
+            bonustimer->start(2000); // Your QTimer object
+        });
+    }
 }
 
 void GameScene::Scoreadd()
@@ -80,6 +94,25 @@ void GameScene::setpipetimer()
  });
 }
 
+void GameScene::setbonustimer()
+{
+   bonustimer = new QTimer(this);
+   connect(bonustimer,&QTimer::timeout,[=](){
+    bool Produce_Bonus=(rand()%(100)>75);
+    if(true){
+        Bonus* tmp_Bonus=new Bonus(score);
+        addItem(tmp_Bonus);
+        connect(tmp_Bonus,&Bonus::touchedsignal,[=](){
+               invincible=1;
+               invincibletimer->start(4000);
+               removeItem(tmp_Bonus);
+                   delete tmp_Bonus;
+        });
+
+       }
+   });
+}
+
 void GameScene::gameover()
 {
     emit(show_gameover_page(score));
@@ -98,14 +131,25 @@ void GameScene::gameover()
 
     //将画面内所有水管都停止运动
     QList<QGraphicsItem*> sceneItems = items();
-        for(int i=0; i<sceneItems.size(); i++){
-            PipeItem * pipe = qgraphicsitem_cast<PipeItem*>(sceneItems[i]);
+    for(int i=0; i<sceneItems.size(); i++){
+        if (i == 0)
+        {
+            PipeItem* pipe = qgraphicsitem_cast<PipeItem*>(sceneItems[0]);
             if(pipe){
                 pipe->pipestop();
             }
         }
-        pipetimer->stop();
-        //停止水管计时器 不再生成新水管
+        else
+        {
+            Bonus* tempBonus = qgraphicsitem_cast<Bonus*>(sceneItems[1]);
+            if (tempBonus){
+                tempBonus->Bonusstop();
+            }
+        }
+    }
+    pipetimer->stop();
+    bonustimer->stop();
+    //停止水管计时器 不再生成新水管
 }
 
 void GameScene::showscore()

@@ -29,8 +29,8 @@ signals:
 
 private slots:
     void Show_Game_Page();
-    void Restart();
-    void Mainmenu();
+    //void Restart();
+    //void Mainmenu();
 };
 
 #endif // GAME_H

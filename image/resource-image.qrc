@@ -17,5 +17,6 @@
         <file>pipe.png</file>
         <file>start.png</file>
         <file>beida.png</file>
+        <file>bonus.png</file>
     </qresource>
 </RCC>
