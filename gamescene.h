@@ -31,7 +31,7 @@ private:
     birditem* bird;
     QGraphicsPixmapItem* startImage;
     QGraphicsPixmapItem* gameoverImage;
-    QGraphicsPixmapItem* nankaiImage;
+    QGraphicsPixmapItem* beidaImage;
     QGraphicsTextItem* show_score;
     bool startsign;
     bool is_paused;
