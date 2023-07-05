@@ -57,7 +57,7 @@ void PipeItem::setX(qreal x)
     m_x = x;
 
     //如果小鸟通过了管道，增加1分
-    if(x<0&&!pass){
+    if(x<-100  &&!pass){
         pass=1;
         QGraphicsScene* nowscene=scene();
                 GameScene* myscene = dynamic_cast<GameScene *>(nowscene);

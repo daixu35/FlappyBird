@@ -71,9 +71,9 @@ void GameScene::mainstart()
 }
 
 void GameScene::Scoreadd()
-{
+{   if(!gameoverbool){
     score++;
-    show_score->setPlainText("分数:"+QString::number(score));
+    show_score->setPlainText("分数:"+QString::number(score));}
 }
 
 void GameScene::setpipetimer()
@@ -83,8 +83,9 @@ void GameScene::setpipetimer()
      PipeItem* pipe = new PipeItem(score);
      //如果小鸟与水管碰撞，游戏结束
      connect(pipe,&PipeItem::collidesignal,[=](){
+         if(!invincible){
          pipetimer->stop();
-         gameover();
+         gameover();}
      });
      //如果小鸟与地板碰撞，游戏结束
      connect(bird,&birditem::collidesignal2,[=](){
@@ -130,23 +131,6 @@ void GameScene::gameover()
     //显示游戏结束和校徽画面
 
     //将画面内所有水管都停止运动
-    QList<QGraphicsItem*> sceneItems = items();
-    for(int i=0; i<sceneItems.size(); i++){
-        if (i == 0)
-        {
-            PipeItem* pipe = qgraphicsitem_cast<PipeItem*>(sceneItems[0]);
-            if(pipe){
-                pipe->pipestop();
-            }
-        }
-        else
-        {
-            Bonus* tempBonus = qgraphicsitem_cast<Bonus*>(sceneItems[1]);
-            if (tempBonus){
-                tempBonus->Bonusstop();
-            }
-        }
-    }
     pipetimer->stop();
     bonustimer->stop();
     //停止水管计时器 不再生成新水管
@@ -179,37 +163,8 @@ void GameScene::keyPressEvent(QKeyEvent *event)
         if((event->key()==Qt::Key_Space&&!is_paused)||(event->key()==Qt::Key_W&&!is_paused)){
             bird->jump();
     }
-    else if(event->key()==Qt::Key_Escape||event->key()==Qt::Key_W){
-        if(is_paused==0){
-            is_paused=1;
-            bird->birdpause();   //鸟停止运动
-            ground->groundpause();   //地板停止运动
-            QList<QGraphicsItem*> sceneItems = items();
-                for(int i=0; i<sceneItems.size(); i++){
-                    PipeItem * pipe = qgraphicsitem_cast<PipeItem*>(sceneItems[i]);
-                    if(pipe){
-                        pipe->pipepause();
-                    }
-                }
-            pipetimer->stop();
-        }
-        else{
-            is_paused=0;
-            bird->birdresume();
-            ground->groundresume();
-            QList<QGraphicsItem*> sceneItems = items();
-                for(int i=0; i<sceneItems.size(); i++){
-                    PipeItem * pipe = qgraphicsitem_cast<PipeItem*>(sceneItems[i]);
-                    if(pipe){
-                        pipe->piperesume();
-                    }
-                }
-            pipetimer->start();
-
     }
-}
 
 //若游戏已结束 则空格不再有任何作用
-    }
 QGraphicsScene::keyPressEvent(event);
 }
