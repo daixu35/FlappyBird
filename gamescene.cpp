@@ -26,7 +26,7 @@ GameScene::GameScene(QObject *parent) :
    //放在最顶层
 
     gameoverImage = new QGraphicsPixmapItem(QPixmap(":/gameover.png"));
-    nankaiImage = new QGraphicsPixmapItem(QPixmap(":/beida.png"));
+    beidaImage = new QGraphicsPixmapItem(QPixmap(":/beida.png"));
     show_score = new QGraphicsTextItem(" 分数:0 ");
     show_score->setPos(216, 30);
     show_score->setZValue(20);
@@ -121,13 +121,13 @@ void GameScene::gameover()
     bird->birdstop();   //鸟停止运动
     ground->groundstop();   //地板停止运动
     showscore();
-
+    show_score->setPlainText("");
     addItem(gameoverImage);
     gameoverImage->setPos(0,0);
     gameoverImage->setZValue(100);
-    addItem(nankaiImage);
-    nankaiImage->setPos(138,400);
-    nankaiImage->setZValue(100);
+    addItem(beidaImage);
+    beidaImage->setPos(138,400);
+    beidaImage->setZValue(100);
     //显示游戏结束和校徽画面
 
     //将画面内所有水管都停止运动
@@ -143,14 +143,14 @@ void GameScene::showscore()
     scoretext->setHtml(lastscore);
 
     //设置分数显示界面字体和颜色
-    QFont font("Consolas",20,QFont::Bold);
+    QFont font("Consolas",28,QFont::Bold);
     scoretext->setFont(font);
     QColor color(126,12,110);
     scoretext->setDefaultTextColor(color);
 
     //设置位置
     addItem(scoretext);
-    scoretext->setPos(35 ,280);
+    scoretext->setPos(140 ,230 );
 }
 
 void GameScene::keyPressEvent(QKeyEvent *event)
