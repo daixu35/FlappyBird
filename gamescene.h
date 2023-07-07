@@ -9,7 +9,6 @@
 #include "ground.h"
 #include <QGraphicsPixmapItem>
 
-class Gameover;
 class GameScene : public QGraphicsScene
 {
     Q_OBJECT
@@ -18,7 +17,6 @@ public:
     void birddef();
     void mainstart();
     void Scoreadd();
-    Gameover* gameoverScene;
 
 signals:
 
@@ -33,11 +31,11 @@ private:
     QGraphicsPixmapItem* gameoverImage;
     QGraphicsPixmapItem* beidaImage;
     QGraphicsTextItem* show_score;
-    bool startsign;
     bool is_paused;
+    bool startsign;
+    bool gameoverbool;
     void gameover();
     groundItem* ground;
-    bool gameoverbool;
     int score=0;
     QGraphicsTextItem* scoretext;
     void showscore();

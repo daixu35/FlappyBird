@@ -11,15 +11,16 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QWidget>
-
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Game
 {
 public:
+    QPushButton *EscButton;
     QGraphicsView *Box;
 
     void setupUi(QWidget *Game)
@@ -33,6 +34,9 @@ public:
         Box->setObjectName(QStringLiteral("Box"));
         Box->setGeometry(QRect(0, 0, 434, 646));
         Box->setFixedSize(QSize(434, 646));
+        EscButton = new QPushButton(Game);
+        EscButton->setObjectName(QStringLiteral("EscButton"));
+        EscButton->setGeometry(QRect(10, 0, 93, 28));
 
         retranslateUi(Game);
 
@@ -42,6 +46,7 @@ public:
     void retranslateUi(QWidget *Game)
     {
         Game->setWindowTitle(QApplication::translate("Game", "Form", nullptr));
+        EscButton->setText(QApplication::translate("Game", "Esc", nullptr));
     } // retranslateUi
 
 };

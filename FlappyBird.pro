@@ -35,7 +35,6 @@ SOURCES += \
     birditem.cpp \
     ground.cpp \
     pipeitem.cpp \
-    gameover.cpp \
     bonus.cpp
 
 HEADERS += \
@@ -48,7 +47,6 @@ HEADERS += \
     birditem.h \
     ground.h \
     pipeitem.h \
-    gameover.h \
     bonus.h
 
 FORMS += \

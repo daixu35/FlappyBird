@@ -68,27 +68,23 @@ void FlappyApp::Show_Main_Page()
 
 void FlappyApp::on_playGame_clicked()
 {
-    this->hide();
+    this->close();
     emit game_page();
 }
 
 void FlappyApp::on_Option_clicked()
 {
-    this->hide();
+    this->close();
     emit setting_page();
 }
 
 void FlappyApp::on_HelpBtn_clicked()
 {
-    this->hide();
+    this->close();
     emit help_page();
 }
 
 void FlappyApp::on_exitBtn_clicked()
 {
     QApplication::quit();
-}
-
-void FlappyApp::Restart_Game(){
-    this->repaint();
 }

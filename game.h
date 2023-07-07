@@ -2,7 +2,6 @@
 #define GAME_H
 
 #include "gamescene.h"
-#include "gameover.h"
 #include <QWidget>
 
 namespace Ui {
@@ -20,17 +19,17 @@ public:
 private:
     Ui::Game *ui;
     GameScene* scene;
-    Gameover* gameoverPage;
+    Game* game;
 
 signals:
     void show_main_page();
-    void show_gameover_page();
-    void restart();
 
 private slots:
     void Show_Game_Page();
-    //void Restart();
-    //void Mainmenu();
+    void on_EscButton_clicked();
+
+private:
+    void initGameScene();
 };
 
 #endif // GAME_H

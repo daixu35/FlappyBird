@@ -2,7 +2,6 @@
 #include "game.h"
 #include "setting.h"
 #include "help.h"
-#include "gameover.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -30,7 +29,7 @@ int main(int argc, char *argv[])
     QObject::connect(&mainPage, SIGNAL(help_page()), &helpPage, SLOT(Show_Help_Page()));
     QObject::connect(&settingPage, SIGNAL(show_main_page()), &mainPage, SLOT(Show_Main_Page()));
     QObject::connect(&helpPage, SIGNAL(show_main_page()), &mainPage, SLOT(Show_Main_Page()));
-    QObject::connect(&gamePage, SIGNAL(restart()), &mainPage, SLOT(Restart_Game()));
+    QObject::connect(&gamePage, SIGNAL(show_main_page()), &mainPage, SLOT(Show_Main_Page()));
     return a.exec();
 }
 

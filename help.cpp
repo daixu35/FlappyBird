@@ -16,6 +16,23 @@ Help::Help(QWidget *parent) :
     ui->backBtn->setStyleSheet("QPushButton {background-color: transparent;}"
                                 "QPushButton {color: black; font-size: 48px; font-family: Impact;}"
                                 "QPushButton:hover {color: red; font-size: 56px;}");
+
+    ui->mask->setFixedSize(400, 510);
+    ui->mask->move(15, 50);
+    ui->mask->setStyleSheet("background-color: rgba(0, 0, 0, 50);border-radius: 10px;");
+    ui->mask->lower();
+
+    ui->playEdu->setFont(QFont("华文隶书", 28, QFont::Bold));
+    ui->playEdu->setStyleSheet("color:white;");
+    ui->playEdu->setFixedSize(100, 50);
+    ui->playEdu->move(25, 75);
+
+    ui->eduText->move(50, 150);
+    ui->eduText->resize(300, 450);
+    ui->eduText->setStyleSheet("background:transparent;border-width:0;border-style:outset;"
+                               "color:white;font-size:48px;");
+
+
 }
 
 Help::~Help()

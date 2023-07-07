@@ -2,12 +2,11 @@
 #include <QKeyEvent>
 #include "birditem.h"
 #include "ground.h"
-#include "gameover.h"
 #include "bonus.h"
 
 GameScene::GameScene(QObject *parent) :
     QGraphicsScene(parent),startsign(0),is_paused(0),gameoverbool(0),score(0)
-{
+{   
     setpipetimer();
     //水管定时器 用于定时间间隔生成新水管
 
@@ -27,11 +26,10 @@ GameScene::GameScene(QObject *parent) :
 
     gameoverImage = new QGraphicsPixmapItem(QPixmap(":/gameover.png"));
     beidaImage = new QGraphicsPixmapItem(QPixmap(":/beida.png"));
-    show_score = new QGraphicsTextItem(" 分数:0 ");
-    show_score->setPos(216, 30);
+    show_score = new QGraphicsTextItem(" Score:0 ");
+    show_score->setPos(260, 10);
     show_score->setZValue(20);
-    QFont font;
-    font.setPointSize(40); //
+    QFont font("华文琥珀", 24);
 
     // 使用 QFont 对象来更改 QGraphicsTextItem 的字体
     show_score->setFont(font);
@@ -40,11 +38,12 @@ GameScene::GameScene(QObject *parent) :
     show_score->setDefaultTextColor(QColor(Qt::white)); // 设置字体颜色为白色
     addItem(show_score);
 
-
+    // 设置Z值为10，放在最上面
     ground = new groundItem;
     ground->setZValue(10);
-       addItem(ground);
-         // 设置Z值为10，放在最上面
+    addItem(ground);
+
+
 }
 
 void GameScene::birddef()
@@ -58,7 +57,7 @@ void GameScene::mainstart()
 {
     startsign=1;
     removeItem(startImage);
-        delete startImage;
+    delete startImage;
     bird->birdstart();
     if(!pipetimer->isActive()){
         pipetimer->start(2000);
@@ -73,7 +72,7 @@ void GameScene::mainstart()
 void GameScene::Scoreadd()
 {   if(!gameoverbool){
     score++;
-    show_score->setPlainText("分数:"+QString::number(score));}
+    show_score->setPlainText("Score:"+QString::number(score));}
 }
 
 void GameScene::setpipetimer()
@@ -162,9 +161,9 @@ void GameScene::keyPressEvent(QKeyEvent *event)
     {
         if((event->key()==Qt::Key_Space&&!is_paused)||(event->key()==Qt::Key_W&&!is_paused)){
             bird->jump();
-    }
+        }
     }
 
-//若游戏已结束 则空格不再有任何作用
-QGraphicsScene::keyPressEvent(event);
+    //若游戏已结束 则空格不再有任何作用
+//    QGraphicsScene::keyPressEvent(event);
 }
